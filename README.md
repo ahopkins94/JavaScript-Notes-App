@@ -1,3 +1,4 @@
-# JavaScript Testing Framework
+# Notes App
 
-* A simple testing framework for JavaScript, created for Makers Academy.
+* A notes app.
+* As part of this app, we created a simple testing framework for JavaScript, modelled on Jasmine.

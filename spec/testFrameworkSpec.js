@@ -1,4 +1,4 @@
-// var Tester = require("../lib/tester.js");
+var Tester = require("../lib/tester.js");
 
 describe('Tester', function() {
   describe('describe', function(){

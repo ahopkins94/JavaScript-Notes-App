@@ -1,4 +1,3 @@
-
 describe('Note', function(){
   var note = new Note('Javascript');
   describe('.text', function(){

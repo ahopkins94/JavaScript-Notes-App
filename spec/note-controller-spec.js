@@ -13,11 +13,12 @@ describe("NoteController", function() {
 
   describe(".loadNotesHTML", function() {
     it("adds list to div on page", function() {
+      var htmlMock = {
+        innerHTML: "string"
+      };
+      document.getElementById = function(id) { return htmlMock; };
       controller.loadNotesHTML();
-      
-      var app = document.getElementById("app");
-      var html = app.innerHTML;
-      var expression = (html == "<ul><li>Favourite drink: seltzer</li></ul>");
+      var expression = (htmlMock.innerHTML == "<ul><li>Favourite drink: seltzer</li></ul>");
       expect(expression).toBe(true);
     });
   });

@@ -19,5 +19,10 @@
     <script src="./spec/noteListSpec.js"></script>
     <script src="./spec/noteListViewSpec.js"></script>
     <script src="./lib/note-controller.js"></script>
+    <script>
+      var noteList = new NoteList();
+      var controller = new NoteController(noteList);
+      controller.loadNotelistHTML();
+    </script>
   </body>
 </html>

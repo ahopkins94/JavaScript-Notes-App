@@ -44,4 +44,27 @@ describe('Tester', function() {
       expect(console.log).toHaveBeenCalledWith('  Error: expected "hello" to equal "goodbye"');
     });
   });
+
+  describe("toInclude", function() {
+    it('returns false if not called on array or string', function() {
+      var assertion = Tester.expect(9);
+      expect(assertion.toInclude("a")).toEqual(false);
+    });
+    it('returns false if string does not include element', function() {
+      var assertion = Tester.expect("hello");
+      expect(assertion.toInclude("a")).toEqual(false);
+    });
+    it('returns true if string does include element', function() {
+      var assertion = Tester.expect("hello");
+      expect(assertion.toInclude("o")).toEqual(true);
+    });
+    it('returns false if array doesnt include element', function() {
+      var assertion = Tester.expect(["a", "b"]);
+      expect(assertion.toInclude("c")).toEqual(false);
+    });
+    it('returns true if array does include element', function() {
+      var assertion = Tester.expect(["a", "b"]);
+      expect(assertion.toInclude("b")).toEqual(true);
+    });
+  });
 });

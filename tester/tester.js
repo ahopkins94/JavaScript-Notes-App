@@ -18,6 +18,22 @@
           console.log(`  Error: expected "${expression1}" to equal "${expression2}"`);
           return false;
         }
+      },
+      toInclude: function(element) {
+        try {
+          expression1.includes(element);
+        }
+        catch(err) {
+          console.log(` Error: ${expression1} does not have an include() method`);
+          return false;
+        }
+        if (expression1.includes(element)) {
+          console.log("  :)");
+          return true;
+        } else {
+          console.log(`  Error: expected "${expression1}" to include "${element}"`);
+          return false;
+        }
       }
     };
   }

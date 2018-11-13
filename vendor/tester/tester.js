@@ -1,11 +1,21 @@
 (function(exports) {
+
+  var beforeFunctions = [];
+
   function describe(description, callback) {
+    console.log(description);
+    callback();
+    beforeFunctions = [];
+  }
+
+  function it(description, callback) {
+    beforeFunctions.forEach((callback) => { callback.call(); });
     console.log(description);
     callback();
   }
 
-  function it(description, callback) {
-    describe(description, callback);
+  function beforeEach(callback) {
+    beforeFunctions.push(callback);
   }
 
   function expect(expression1) {
@@ -40,4 +50,6 @@
   exports.describe = describe;
   exports.it = it;
   exports.expect = expect;
+  exports.beforeFunctions = beforeFunctions;
+  exports.beforeEach = beforeEach;
 })(this);

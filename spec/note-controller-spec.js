@@ -37,12 +37,14 @@ describe("NoteController", function() {
 
   describe(".displayNoteOnClick()", function() {
     it("adds event listener to window", function() {
-      var counter = 0;
-      window.addEventListener = function(event, callback) {
-        if (callback === controller.loadSingleNoteHTML) { counter += 1 };
+      var htmlMock = {
+        innerHTML: "string"
       };
+      document.getElementById = function() { return htmlMock; };
       controller.displayNoteOnClick();
-      expect(counter).toBe(1);
+      window.location.hash = '#notes/0';
+      expect(htmlMock.innerHTML).toBe("Favourite drink: seltzer");
+
     });
   });
 });

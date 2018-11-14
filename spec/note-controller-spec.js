@@ -11,7 +11,7 @@ describe("NoteController", function() {
     });
   });
 
-  describe(".loadNotesHTML", function() {
+  describe(".loadNotesHTML()", function() {
     it("adds list to div on page", function() {
       var htmlMock = {
         innerHTML: "string"
@@ -20,6 +20,29 @@ describe("NoteController", function() {
       controller.loadNotesHTML();
       var expression = (htmlMock.innerHTML == "<ul><li><a href='#notes/0'>Favourite drink: sel...</a></li></ul>");
       expect(expression).toBe(true);
+    });
+  });
+
+  describe(".loadSingleNoteHTML()", function() {
+    it("displays text of note on page", function() {
+      var htmlMock = {
+        innerHTML: "string"
+      };
+      document.getElementById = function() { return htmlMock; };
+      controller.loadSingleNoteHTML(0);
+      var expression = (htmlMock.innerHTML == "<div>Favourite drink: seltzer</div>");
+      expect(expression).toBe(true);
+    });
+  });
+
+  describe(".displayNoteOnClick()", function() {
+    it("adds event listener to window", function() {
+      var counter = 0;
+      window.addEventListener = function(event, callback) {
+        if (callback === controller.loadSingleNoteHTML) { counter += 1 };
+      };
+      controller.displayNoteOnClick();
+      expect(counter).toBe(1);
     });
   });
 });

@@ -16,5 +16,10 @@
     <script src="./lib/noteListView.js"></script>
     <script src="./lib/singleNoteView.js"></script>
     <script src="./lib/note-controller.js"></script>
+    <script>
+      var controller = new NoteController(new NoteList());
+      controller.loadNotesHTML();
+      controller.displayNoteOnClick();
+    </script>
   </body>
 </html>

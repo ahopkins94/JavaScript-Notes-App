@@ -23,28 +23,31 @@ describe("NoteController", function() {
     });
   });
 
-  describe(".loadSingleNoteHTML()", function() {
+  describe(".displayCurrentNote()", function() {
     it("displays text of note on page", function() {
       var htmlMock = {
         innerHTML: "string"
       };
       document.getElementById = function() { return htmlMock; };
-      controller.loadSingleNoteHTML(0);
+      window.location.hash = "#notes/0";
+      controller.displayCurrentNote();
       var expression = (htmlMock.innerHTML == "<div>Favourite drink: seltzer</div>");
       expect(expression).toBe(true);
     });
   });
 
   describe(".displayNoteOnClick()", function() {
-    it("adds event listener to window", function() {
-      var htmlMock = {
-        innerHTML: "string"
-      };
-      document.getElementById = function() { return htmlMock; };
-      controller.displayNoteOnClick();
-      window.location.hash = '#notes/0';
-      expect(htmlMock.innerHTML).toBe("Favourite drink: seltzer");
+    it("adds event listener to display current note on hashchange", function() {
+      var callbackMock = (() => {this.displayCurrentNote();});
+      var expectedArguments = ["hashchange", callbackMock].toString();
 
+      var eventListenerArguments = []
+      window.addEventListener = function(event, callback) {
+         eventListenerArguments = [event, callback.toString()].toString();
+      };
+      controller.displayNoteOnClick();
+
+      expect(eventListenerArguments).toBe(expectedArguments);
     });
   });
 });

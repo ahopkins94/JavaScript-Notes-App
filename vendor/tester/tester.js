@@ -28,10 +28,10 @@
     return {
       toBe: function(expression2){
         if (expression1 === expression2) {
-          console.log(padding+"  :)");
+          console.log(padding + "%c  :)", "color: green");
           return true;
         } else {
-          console.log(padding+`  Error: expected "${expression1}" to equal "${expression2}"`);
+          console.log(padding+`%c  Error: expected "${expression1}" to equal "${expression2}"`, "color: red");
           return false;
         }
       },
@@ -40,14 +40,14 @@
           expression1.includes(element);
         }
         catch(err) {
-          console.log(padding+`  Error: ${expression1} does not have an include() method`);
+          console.log(padding+`%c  Error: ${expression1} does not have an include() method`, "color: red");
           return false;
         }
         if (expression1.includes(element)) {
-          console.log(padding + "  :)");
+          console.log(padding + "%c  :)", "color: green");
           return true;
         } else {
-          console.log(padding+`  Error: expected "${expression1}" to include "${element}"`);
+          console.log(padding+`%c  Error: expected "${expression1}" to include "${element}"`, "color: red");
           return false;
         }
       }

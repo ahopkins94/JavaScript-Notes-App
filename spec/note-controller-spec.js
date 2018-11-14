@@ -16,9 +16,9 @@ describe("NoteController", function() {
       var htmlMock = {
         innerHTML: "string"
       };
-      document.getElementById = function(id) { return htmlMock; };
+      document.getElementById = function() { return htmlMock; };
       controller.loadNotesHTML();
-      var expression = (htmlMock.innerHTML == "<ul><li>Favourite drink: seltzer</li></ul>");
+      var expression = (htmlMock.innerHTML == "<ul><li>Favourite drink: sel...</li></ul>");
       expect(expression).toBe(true);
     });
   });

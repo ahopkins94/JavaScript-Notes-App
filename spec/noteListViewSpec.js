@@ -14,6 +14,10 @@ describe('NoteListView', function(){
       noteList.create('Javascript');
       expect(noteListView.html()).toBe('<ul><li>Ruby</li><li>Javascript</li></ul>');
     });
+    it('returns only first 20 characters of note', function() {
+      noteList.create("Hello my name is Chris");
+      expect(noteListView.html()).toBe('<ul><li>Ruby</li><li>Javascript</li><li>Hello my name is Chr...</li></ul>');
+    });
 
 
   });

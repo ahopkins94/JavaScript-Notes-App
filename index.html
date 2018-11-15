@@ -7,6 +7,10 @@
     <title></title>
   </head>
   <body>
+    <form id='text' action='#notes/new' method='post'>
+      <textarea type='input' name='text'></textarea>
+      <input type='submit' value='Submit'>
+    </form>
     <div id="app">
       hello Chris muge
     </div>
@@ -18,6 +22,7 @@
     <script src="./lib/note-controller.js"></script>
     <script>
       var controller = new NoteController(new NoteList());
+      controller.interceptSubmit();
       controller.loadNotesHTML();
       controller.displayNoteOnClick();
     </script>

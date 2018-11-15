@@ -41,7 +41,7 @@ describe("NoteController", function() {
       var callbackMock = (() => {this.displayCurrentNote();});
       var expectedArguments = ["hashchange", callbackMock].toString();
 
-      var eventListenerArguments = []
+      var eventListenerArguments = [];
       window.addEventListener = function(event, callback) {
          eventListenerArguments = [event, callback.toString()].toString();
       };

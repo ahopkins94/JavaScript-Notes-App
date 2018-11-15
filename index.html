@@ -22,8 +22,8 @@
     <script src="./lib/note-controller.js"></script>
     <script>
       var controller = new NoteController(new NoteList());
-      controller.interceptSubmit();
       controller.loadNotesHTML();
+      controller.displayNoteOnSubmit();
       controller.displayNoteOnClick();
     </script>
   </body>

@@ -11,10 +11,10 @@ describe("NoteController", function() {
 
   describe(".displayNewNote()", function() {
     it("displays text of new note", function() {
-      var element = document.createElement('div')
-      element.id = 'app'
-      document.body.appendChild(element)
-      controller.displayNewNote("lemonade")
+      var element = document.createElement('div');
+      element.id = 'app';
+      document.body.appendChild(element);
+      controller.displayNewNote("lemonade");
       expect(element.innerHTML).toBe("<ul><li><a href=\"#notes/0\">Favourite drink: sel...</a></li><li><a href=\"#notes/1\">lemonade</a></li></ul>")
       controller.noteListView.noteList._notes.pop()
     });
